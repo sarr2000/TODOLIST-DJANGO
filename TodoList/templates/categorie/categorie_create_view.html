@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p></p>
+<h5 class='text-center text-uppercase'>Formulaire ajout catégorie</h5>
+<div class="container">
+    <!--<form method="POST" enctype="multipart/form-data">-->
+    <form method='post' enctype="multipart/form-data" >
+        <!-- Security token -->
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type='submit' value='Save' class='btn btn-primary'>
+    </form>
+</div>
+
+<!--  {% endblock %} -->
+
+
+
+
+
+

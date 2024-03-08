@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+
+<h3>Liste des catégories </h3>
+
+    <div class="container" >
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th scope="col">Nom Catégorie</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for categorie in liste_des_categories %}
+                <tr>
+
+                    <td>{{ categorie.nom_categorie }}</td>
+                </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}
+
+
+

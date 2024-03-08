@@ -1,0 +1,56 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<p></p>
+<h5 class='text-center text-uppercase'>Page de création de compte</h5>
+
+<form action="" method="post">
+
+
+   {% csrf_token %}
+
+
+    <div class="form-group">
+       <label for="inputUsername">Nom d'utilisateur</label>
+       <input type="text" name="username" id="inputUsername" class="form-control" required autofocus>
+
+   </div>
+
+   <div class="form-group">
+       <label for="first_name">Prénom</label>
+       <input type="text" name="first_name" id="first_name" class="form-control" required>
+   </div>
+
+    <div class="form-group">
+       <label for="last_name">Nom</label>
+       <input type="text" name="last_name" id="last_name" class="form-control" required>
+   </div>
+
+   <div class="form-group">
+       <label for="inputEmail">Email</label>
+       <input type="email" name="email" id="inputEmail"  class="form-control" required autofocus>
+
+   </div>
+
+   <div class="form-group">
+       <label for="inputPassword">Mot de passe</label>
+       <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+   </div>
+
+   <div class="form-group">
+       <label for="inputConfirmPassword">Confirmer le mot de passe</label>
+       <input type="password" name="confirm_password" id="inputConfirmPassword" class="form-control" required>
+   </div>
+
+
+
+   <div class="form-group">
+
+       <button type="submit" class="btn btn-primary">Créer un compte</button>
+   </div>
+
+</form>
+
+{%  endblock %}

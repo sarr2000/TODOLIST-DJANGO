@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+
+<h3>Liste des taches </h3>
+
+    <div class="container" >
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nom tache</th>
+            <th scope="col">Date tache</th>
+            <th scope="col">Heure debut</th>
+            <th scope="col">Heure fin</th>
+            <th scope="col">Priorité</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Responsable</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for tache in liste_des_taches %}
+                <tr>
+
+                    <td>{{ tache.nom_tache }}</td>
+                    <td>{{ tache.date}}</td>
+                    <td>{{ tache.heure_debut }}</td>
+                    <td>{{ tache.heure_fin }}</td>
+                    <td>{{ tache.priorite }}</td>
+                    <td>{{ tache.statut }}</td>
+                    <td>{{ tache.categorie }}</td>
+                    <td>{{ tache.responsable }}</td>
+                </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}
+
+
+
