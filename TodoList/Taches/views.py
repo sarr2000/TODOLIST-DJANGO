@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tache,Categorie
+from .models import Tache,Categorie,User
 from django.views.generic import  CreateView,ListView,DeleteView,DetailView,UpdateView
 from  .forms import CreateTacheForm,CreateCategorieForm
 from django.urls import reverse_lazy
@@ -30,3 +30,18 @@ class TacheListView(ListView):
     model = Tache
     context_object_name = "liste_des_taches"
     template_name = "tache/tache_list_view.html"
+
+
+    # ********** filtrer les taches selon l'utilisateur connecté************'
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        u=self.request.user
+        if u.username=='admin':
+            return queryset
+        else:
+           return queryset.filter(responsable=u)
+
+
+
+
+

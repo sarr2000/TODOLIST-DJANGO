@@ -1,10 +1,10 @@
 
 from django.shortcuts import render,redirect
 from django.views import View
-from django.contrib.auth.models import  User
+from django.contrib.auth.models import  User,Group
 from django.contrib import messages
 from django.contrib.auth import login,logout,authenticate
-from django.views.generic import ListView,CreateView
+from django.views.generic import ListView,CreateView,DetailView,DeleteView
 from django.urls import reverse_lazy
 from .forms import CreateUserForm
 
@@ -33,7 +33,9 @@ class RegisterView(View):
 
             else:
 
-                user = User.objects.create_user(username=username,email=email,password=password)
+                user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+                group = Group.objects.get(name='Standard')
+                user.groups.add(group)
                 user.save()
                 messages.success(request,'Compte créé avec succés')
 

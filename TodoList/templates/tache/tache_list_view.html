@@ -23,7 +23,8 @@
         </tr>
         </thead>
         <tbody>
-
+      {% if liste_des_taches %}
+        <ul>
             {% for tache in liste_des_taches %}
                 <tr>
 
@@ -38,7 +39,11 @@
                 </tr>
             {% endfor %}
 
+        </ul>
+      {% else %}
+      <div class="alert-warning">Pas de taches à afficher</div>
 
+  {% endif %}
         </tbody>
     </table>
 
