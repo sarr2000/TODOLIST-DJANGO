@@ -12,4 +12,7 @@ urlpatterns = [
     path('categorieForm/', views.CategorieCreateview.as_view(), name='categorieForm'),
     path('taches/', views.TacheListView.as_view(), name='taches'),
     path('tacheForm/', views.TacheCreateview.as_view(), name='tacheForm'),
+    path('Edit/<int:pk>/', views.TacheUpdateView.as_view(),name='Edit'),
+    path('delete/<int:pk>/', views.TacheDeleteView.as_view(),name='delete'),
+    path('detail/<int:pk>/', views.TacheDetailView.as_view(), name='detail'),
 ]

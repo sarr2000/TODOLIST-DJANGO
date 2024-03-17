@@ -16,11 +16,11 @@ class Categorie(models.Model):
 
 class Tache(models.Model):
     nom_tache =models.CharField(max_length=100)
-    date = models.DateField(null='true', blank='null')
-    heure_debut = models.TimeField(null='true', blank='null')
-    heure_fin = models.TimeField(null='true', blank='null')
+    date = models.DateField(null='true', blank='True')
+    heure_debut = models.TimeField(null='true', blank='True')
+    heure_fin = models.TimeField(null='true', blank='True')
     choix_priorite=(
-        ('Ffaible',"Faible"),
+        ('faible',"Faible"),
         ('moyenne',"Moyenne"),
         ('haute',"Haute"),
     )
@@ -32,8 +32,8 @@ class Tache(models.Model):
         ('à faire',"A faire"),
     )
     statut = models.CharField(max_length= 20,choices=choix_statut)
-    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE, null='true', blank='null')
-    responsable = models.ForeignKey(User, on_delete=models.CASCADE, null='true',blank='true')
+    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE, null='true', blank='True')
+    responsable = models.ForeignKey(User, on_delete=models.CASCADE, null='true',blank='True')
     commentaire = models.TextField()
 
 

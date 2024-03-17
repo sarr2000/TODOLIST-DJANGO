@@ -42,6 +42,32 @@ class TacheListView(ListView):
            return queryset.filter(responsable=u)
 
 
+class TacheUpdateView(UpdateView):
+    model = Tache
+    form_class = CreateTacheForm
+    # fields = ['nom_tache','date','heure_debut','heure_fin','priorite','statut','categorie','responsable','commentaire']
+    success_url = reverse_lazy("Taches:taches")
+    template_name = "tache/tache_create_view.html"
 
+    def form_valid(self, form):
+        messages.success(self.request,"La tache a été mise à jour avec succès")
+        return super(TacheUpdateView, self).form_valid(form)
+
+
+class TacheDeleteView(DeleteView):
+    model = Tache
+    context_object_name = 'tache'
+    success_url = reverse_lazy("Taches:taches")
+    template_name = "tache/tache_confirmation_delete.html"
+
+    def form_valid(self, form):
+        messages.success(self.request,"tache supprimée avec succès")
+        return super(TacheDeleteView,self).form_valid(form)
+
+
+class TacheDetailView(DetailView):
+    model = Tache
+    context_object_name = 'tache'
+    template_name = "tache/tache_detail_view.html"
 
 
