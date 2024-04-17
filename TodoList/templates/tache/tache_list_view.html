@@ -2,63 +2,67 @@
 
 {% block content %}
 <br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+        <h3>Liste des taches </h3>
 
-<h3>Liste des taches </h3>
-
-    <div class="main-container" >
-         <a href="{% url 'Taches:tacheForm' %}" class="btn btn-success" >Ajout tâche</a>
+        <div class="main-container">
+          <div  style="text-align: right"> <a href="{% url 'Taches:tacheForm' %}" class="btn btn-success ">Ajout tâche</a></div>
 
 
-    <table class="table table-striped table-bordered thead-light"  >
-        <thead>
-        <tr style="background-color: #11416b36">
-            <th scope="col">Nom tache</th>
-            <th scope="col">Date tache</th>
-            <th scope="col">Heure debut</th>
-            <th scope="col">Heure fin</th>
-            <th scope="col">Priorité</th>
-            <th scope="col">Statut</th>
-            <th scope="col">Catégorie</th>
-            <th scope="col">Responsable</th>
-            <th scope="col" style="text-align: center">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-      {% if liste_des_taches %}
-        <ul>
-            {% for tache in liste_des_taches %}
-                <tr>
 
-                    <td>{{ tache.nom_tache }}</td>
-                    <td>{{ tache.date}}</td>
-                    <td>{{ tache.heure_debut }}</td>
-                    <td>{{ tache.heure_fin }}</td>
-                    <td>{{ tache.priorite }}</td>
-                    <td>{{ tache.statut }}</td>
-                    <td>{{ tache.categorie }}</td>
-                    <td>{{ tache.responsable }}</td>
-<!--                    <td> <a href="/Edit/{{tache.id}}" class="btn btn-success">Edit</a>-->
-                    <td style="text-align: center">
-                        <a href="{% url 'Taches:Edit' tache.id%}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="{% url 'Taches:delete' tache.id%}" class="btn btn-danger btn-sm">Delete</a>
-                        <a href="{% url 'Taches:detail' tache.id%}" class="btn btn-secondary btn-sm">Détail</a>
-                    </td>
-                    <!--<td>
-                        <a href="/Delete/{{rec.id}}" class="btn btn-danger">Delete</a>
-                         <a href="/View/{{rec.id}}" class="btn btn-primary">View</a>
-                    </td>-->
+            <table class="table table-striped table-bordered thead-light">
+                <thead>
+                <tr style="background-color: #11416b36">
+                    <th scope="col">Nom tache</th>
+                    <th scope="col">Date tache</th>
+                    <th scope="col">Heure debut</th>
+                    <th scope="col">Heure fin</th>
+                    <th scope="col">Priorité</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Responsable</th>
+                    <th scope="col" style="text-align: center">Actions</th>
                 </tr>
-            {% endfor %}
+                </thead>
+                <tbody>
+                {% if liste_des_taches %}
+                <ul>
+                    {% for tache in liste_des_taches %}
+                    <tr>
 
-        </ul>
-      {% else %}
-      <div class="alert-warning">Pas de taches à afficher</div>
+                        <td>{{ tache.nom_tache }}</td>
+                        <td>{{ tache.date}}</td>
+                        <td>{{ tache.heure_debut }}</td>
+                        <td>{{ tache.heure_fin }}</td>
+                        <td>{{ tache.priorite }}</td>
+                        <td>{{ tache.statut }}</td>
+                        <td>{{ tache.categorie }}</td>
+                        <td>{{ tache.responsable }}</td>
+                        <!--                    <td> <a href="/Edit/{{tache.id}}" class="btn btn-success">Edit</a>-->
+                        <td style="text-align: center">
+                            <a href="{% url 'Taches:Edit' tache.id%}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{% url 'Taches:delete' tache.id%}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{% url 'Taches:detail' tache.id%}" class="btn btn-secondary btn-sm">Détail</a>
+                        </td>
+                        <!--<td>
+                            <a href="/Delete/{{rec.id}}" class="btn btn-danger">Delete</a>
+                             <a href="/View/{{rec.id}}" class="btn btn-primary">View</a>
+                        </td>-->
+                    </tr>
+                    {% endfor %}
 
-  {% endif %}
-        </tbody>
-    </table>
+                </ul>
+                {% else %}
+                <div class="alert-warning">Pas de taches à afficher</div>
+
+                {% endif %}
+                </tbody>
+            </table>
 
     </div>
+</div>
 {% endblock %}
 
 

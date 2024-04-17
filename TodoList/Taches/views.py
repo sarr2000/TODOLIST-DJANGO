@@ -4,8 +4,10 @@ from django.views.generic import  CreateView,ListView,DeleteView,DetailView,Upda
 from  .forms import CreateTacheForm,CreateCategorieForm
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.models import PermissionsMixin
 # Create your views here.
 
+# vue formualire
 class CategorieCreateview(CreateView):
     model =  Categorie
     template_name = "categorie/categorie_create_view.html"
@@ -13,10 +15,25 @@ class CategorieCreateview(CreateView):
     success_url = reverse_lazy("Taches:categories")
 
 
+# vue formualire integree dans une vue liste utilisant une fonction
 class CategorieListView(ListView):
     model = Categorie
     context_object_name = "liste_des_categories"
     template_name = "categorie/categorie_list_view.html"
+
+
+def list_and_create_categorie(request):
+    form= CreateCategorieForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+
+    liste_des_categories = Categorie.objects.all()
+    context = {
+        'form':form,
+        'liste_des_categories': Categorie.objects.all()
+    }
+    return render(request,'categorie/categorie_list_view.html',context)
+
 
 
 class TacheCreateview(CreateView):
@@ -40,7 +57,6 @@ class TacheListView(ListView):
             return queryset
         else:
            return queryset.filter(responsable=u)
-
 
 class TacheUpdateView(UpdateView):
     model = Tache

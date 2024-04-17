@@ -44,6 +44,7 @@ class RegisterView(View):
         return render(request,self.template_name)
 
 
+
 class LoginView(View):
     template_name ='compte/login.html'
 
@@ -70,6 +71,7 @@ def logoutView(request):
    logout(request)
    messages.success(request,'déconnexion réussie')
    return redirect('compte:login')
+
 
 
 class UserListView(ListView):

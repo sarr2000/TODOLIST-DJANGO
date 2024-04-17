@@ -4,37 +4,50 @@
 <br>
 
 <h3>Liste des catégories </h3>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-8">
+         <table class="table table-striped">
+            <thead>
+            <tr>
 
+                <th scope="col-1">Nom Catégorie</th>
 
-    <div class="container" >
-
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-
-            <th scope="col">Nom Catégorie</th>
-
-        </tr>
-        </thead>
-        <tbody>
+            </tr>
+            </thead>
+            <tbody>
 
             {% for categorie in liste_des_categories %}
-                <tr>
+            <tr>
 
-                    <td>{{ categorie.nom_categorie }}</td>
-                </tr>
+                <td>{{ categorie.nom_categorie }}</td>
+            </tr>
             {% endfor %}
 
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+  </div>
+
+<div class="col-4">
+    <p></p>
+    <h5 class='text-center text-uppercase'>Formulaire ajout catégorie</h5>
 
 
+        <!--<form method="POST" enctype="multipart/form-data">-->
+        <form method='post' enctype="multipart/form-data">
+            <!-- Security token -->
 
+            {% csrf_token %}
+            {{ form.as_p }}
 
-
+            <input type='submit' value='Save' class='btn btn-primary'>
+        </form>
     </div>
+    </div>
+</div>
+
+
 {% endblock %}
 
 

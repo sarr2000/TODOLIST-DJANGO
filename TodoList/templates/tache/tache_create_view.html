@@ -1,18 +1,17 @@
-
 {% extends 'base.html' %}
 
-{% block content %} 
+{% block content %}
 
 <p></p>
 <h5 class='text-center text-uppercase'>{% if tache %} Mise à jour {%else %} Création {%endif%} Tache </h5>
 
-  <div class="container">
+<div class="container">
     <!--<form method="POST" enctype="multipart/form-data">-->
-    <form method='post' enctype="multipart/form-data" >
+    <form method='post' enctype="multipart/form-data">
         <!-- Security token -->
 
         {% csrf_token %}
-        {{ form.as_p }}
+         {{ form.as_p }}
 
         <input type='submit' value='Save' class='btn btn-success'>
         <a href="{% url 'Taches:taches' %}" class="btn btn-secondary">Cancel</a>
